@@ -46,18 +46,9 @@ int main() {
             wait(NULL);
             wait(NULL);
 
-            printf("Родительский процесс выполняет команду ps -x с использованием grep:\n");
-            // Используем команду ps -x, чтобы найти процессы родительского и двух дочерних
-            char command[100];
-            snprintf(command, sizeof(command), "ps -x | grep %d", getpid()); // Формируем команду
-            system(command); // Выполняем команду
-
-            // Также можно использовать grep с другими pid, если нужно найти только дочерние процессы
-            snprintf(command, sizeof(command), "ps -x | grep %d", pid1); // Поиск по PID первого дочернего процесса
-            system(command);
-
-            snprintf(command, sizeof(command), "ps -x | grep %d", pid2); // Поиск по PID второго дочернего процесса
-            system(command);
+            printf("Родительский процесс выполняет команду ps -x с использованием grep lab_fork.c:\n");
+            // Используем команду ps -x, чтобы найти процессы, связанные с lab_fork.c
+            system("ps -x | grep lab_fork.c"); // Выполняем команду, чтобы найти процессы по имени программы
         }
         else {
             printf("Ошибка создания второго дочернего процесса\n");
